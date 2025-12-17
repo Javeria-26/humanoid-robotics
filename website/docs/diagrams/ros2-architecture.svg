@@ -1,0 +1,80 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <title>ROS 2 Architecture Diagram</title>
+  <desc>Diagram showing ROS 2 nodes, topics, and message flow</desc>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#f8f9fa"/>
+
+  <!-- Title -->
+  <text x="400" y="40" font-family="Arial" font-size="20" text-anchor="middle" fill="#212529">ROS 2 Architecture: The Robotic Nervous System</text>
+
+  <!-- Nodes -->
+  <g id="nodes">
+    <!-- Sensor Node -->
+    <rect x="50" y="100" width="120" height="60" rx="10" fill="#d1ecf1" stroke="#0c5460" stroke-width="2"/>
+    <text x="110" y="135" font-family="Arial" font-size="14" text-anchor="middle" fill="#212529">Sensor Node</text>
+    <text x="110" y="150" font-family="Arial" font-size="12" text-anchor="middle" fill="#6c757d">Camera/Lidar</text>
+
+    <!-- Processing Node -->
+    <rect x="340" y="80" width="120" height="60" rx="10" fill="#d1ecf1" stroke="#0c5460" stroke-width="2"/>
+    <text x="400" y="115" font-family="Arial" font-size="14" text-anchor="middle" fill="#212529">Processing Node</text>
+    <text x="400" y="130" font-family="Arial" font-size="12" text-anchor="middle" fill="#6c757d">Image Processing</text>
+
+    <!-- Control Node -->
+    <rect x="340" y="160" width="120" height="60" rx="10" fill="#d1ecf1" stroke="#0c5460" stroke-width="2"/>
+    <text x="400" y="195" font-family="Arial" font-size="14" text-anchor="middle" fill="#212529">Control Node</text>
+    <text x="400" y="210" font-family="Arial" font-size="12" text-anchor="middle" fill="#6c757d">Motion Planning</text>
+
+    <!-- Actuator Node -->
+    <rect x="630" y="120" width="120" height="60" rx="10" fill="#d1ecf1" stroke="#0c5460" stroke-width="2"/>
+    <text x="690" y="155" font-family="Arial" font-size="14" text-anchor="middle" fill="#212529">Actuator Node</text>
+    <text x="690" y="170" font-family="Arial" font-size="12" text-anchor="middle" fill="#6c757d">Motor Control</text>
+  </g>
+
+  <!-- Topics -->
+  <g id="topics">
+    <!-- Sensor to Processing -->
+    <line x1="170" y1="130" x2="340" y2="110" stroke="#28a745" stroke-width="3" marker-end="url(#arrow)"/>
+    <text x="255" y="100" font-family="Arial" font-size="12" text-anchor="middle" fill="#28a745">/sensor_data</text>
+
+    <!-- Processing to Control -->
+    <line x1="460" y1="110" x2="630" y2="130" stroke="#28a745" stroke-width="3" marker-end="url(#arrow)"/>
+    <text x="545" y="100" font-family="Arial" font-size="12" text-anchor="middle" fill="#28a745">/processed_info</text>
+
+    <!-- Control to Actuator -->
+    <line x1="460" y1="190" x2="630" y2="170" stroke="#28a745" stroke-width="3" marker-end="url(#arrow)"/>
+    <text x="545" y="180" font-family="Arial" font-size="12" text-anchor="middle" fill="#28a745">/control_cmd</text>
+
+    <!-- Feedback loop -->
+    <line x1="690" y1="120" x2="690" y2="80" stroke="#dc3545" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrow)"/>
+    <line x1="690" y1="80" x2="460" y2="80" stroke="#dc3545" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrow)"/>
+    <text x="575" y="70" font-family="Arial" font-size="12" text-anchor="middle" fill="#dc3545">/feedback</text>
+  </g>
+
+  <!-- Arrows definition -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#212529"/>
+    </marker>
+  </defs>
+
+  <!-- Legend -->
+  <g id="legend" transform="translate(50, 400)">
+    <rect x="0" y="0" width="250" height="120" fill="white" stroke="#6c757d" stroke-width="1"/>
+    <text x="125" y="20" font-family="Arial" font-size="14" text-anchor="middle" fill="#212529">Legend</text>
+
+    <rect x="10" y="30" width="20" height="10" fill="#d1ecf1" stroke="#0c5460"/>
+    <text x="40" y="40" font-family="Arial" font-size="12" fill="#212529">ROS 2 Node</text>
+
+    <line x1="10" y1="55" x2="30" y2="55" stroke="#28a745" stroke-width="3"/>
+    <text x="40" y="60" font-family="Arial" font-size="12" fill="#212529">Topic (Publish/Subscribe)</text>
+
+    <line x1="10" y1="75" x2="30" y2="75" stroke="#dc3545" stroke-width="2" stroke-dasharray="5,5"/>
+    <text x="40" y="80" font-family="Arial" font-size="12" fill="#212529">Service/Feedback</text>
+  </g>
+
+  <!-- Nervous System Annotation -->
+  <text x="400" y="550" font-family="Arial" font-size="16" text-anchor="middle" fill="#6f42c1">
+    Like the nervous system, ROS 2 coordinates communication between different robot components
+  </text>
+</svg>

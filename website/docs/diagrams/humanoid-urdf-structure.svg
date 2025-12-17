@@ -1,0 +1,116 @@
+<svg width="800" height="800" xmlns="http://www.w3.org/2000/svg">
+  <title>Humanoid URDF Structure Diagram</title>
+  <desc>Diagram showing the structure of a humanoid robot in URDF format with links and joints</desc>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#f8f9fa"/>
+
+  <!-- Title -->
+  <text x="400" y="40" font-family="Arial" font-size="20" text-anchor="middle" fill="#212529">Humanoid Robot URDF Structure</text>
+
+  <!-- Humanoid Robot -->
+  <g id="humanoid" transform="translate(400, 300)">
+    <!-- Torso -->
+    <rect x="-40" y="-80" width="80" height="120" rx="10" fill="#d1ecf1" stroke="#0c5460" stroke-width="2"/>
+    <text x="0" y="-85" font-family="Arial" font-size="12" text-anchor="middle" fill="#212529">torso</text>
+
+    <!-- Head -->
+    <circle cx="0" cy="-120" r="30" fill="#d1ecf1" stroke="#0c5460" stroke-width="2"/>
+    <text x="0" y="-130" font-family="Arial" font-size="12" text-anchor="middle" fill="#212529">head</text>
+
+    <!-- Neck Joint -->
+    <circle cx="0" cy="-80" r="8" fill="#fff3cd" stroke="#856404" stroke-width="2"/>
+    <text x="0" y="-65" font-family="Arial" font-size="10" text-anchor="middle" fill="#856404">neck_joint</text>
+
+    <!-- Left Arm -->
+    <line x1="40" y1="-60" x2="100" y2="-30" stroke="#28a745" stroke-width="8" stroke-linecap="round"/>
+    <text x="70" y="-45" font-family="Arial" font-size="10" text-anchor="middle" fill="#28a745">left_upper_arm</text>
+
+    <!-- Left Elbow -->
+    <circle cx="100" cy="-30" r="8" fill="#fff3cd" stroke="#856404" stroke-width="2"/>
+    <text x="100" y="-15" font-family="Arial" font-size="10" text-anchor="middle" fill="#856404">left_elbow_joint</text>
+
+    <!-- Left Forearm -->
+    <line x1="100" y1="-30" x2="160" y2="0" stroke="#28a745" stroke-width="8" stroke-linecap="round"/>
+    <text x="130" y="-15" font-family="Arial" font-size="10" text-anchor="middle" fill="#28a745">left_lower_arm</text>
+
+    <!-- Right Arm -->
+    <line x1="-40" y1="-60" x2="-100" y2="-30" stroke="#28a745" stroke-width="8" stroke-linecap="round"/>
+    <text x="-70" y="-45" font-family="Arial" font-size="10" text-anchor="middle" fill="#28a745">right_upper_arm</text>
+
+    <!-- Right Elbow -->
+    <circle cx="-100" cy="-30" r="8" fill="#fff3cd" stroke="#856404" stroke-width="2"/>
+    <text x="-100" y="-15" font-family="Arial" font-size="10" text-anchor="middle" fill="#856404">right_elbow_joint</text>
+
+    <!-- Right Forearm -->
+    <line x1="-100" y1="-30" x2="-160" y2="0" stroke="#28a745" stroke-width="8" stroke-linecap="round"/>
+    <text x="-130" y="-15" font-family="Arial" font-size="10" text-anchor="middle" fill="#28a745">right_lower_arm</text>
+
+    <!-- Left Leg -->
+    <line x1="20" y1="40" x2="40" y2="120" stroke="#dc3545" stroke-width="8" stroke-linecap="round"/>
+    <text x="30" y="80" font-family="Arial" font-size="10" text-anchor="middle" fill="#dc3545">left_upper_leg</text>
+
+    <!-- Left Knee -->
+    <circle cx="40" cy="120" r="8" fill="#fff3cd" stroke="#856404" stroke-width="2"/>
+    <text x="40" y="135" font-family="Arial" font-size="10" text-anchor="middle" fill="#856404">left_knee_joint</text>
+
+    <!-- Left Shin -->
+    <line x1="40" y1="120" x2="40" y2="200" stroke="#dc3545" stroke-width="8" stroke-linecap="round"/>
+    <text x="50" y="160" font-family="Arial" font-size="10" text-anchor="middle" fill="#dc3545">left_lower_leg</text>
+
+    <!-- Left Foot -->
+    <rect x="20" y="200" width="40" height="15" rx="5" fill="#6f42c1" stroke="#5a2f91" stroke-width="2"/>
+    <text x="40" y="225" font-family="Arial" font-size="10" text-anchor="middle" fill="#6f42c1">left_foot</text>
+
+    <!-- Right Leg -->
+    <line x1="-20" y1="40" x2="-40" y2="120" stroke="#dc3545" stroke-width="8" stroke-linecap="round"/>
+    <text x="-30" y="80" font-family="Arial" font-size="10" text-anchor="middle" fill="#dc3545">right_upper_leg</text>
+
+    <!-- Right Knee -->
+    <circle cx="-40" cy="120" r="8" fill="#fff3cd" stroke="#856404" stroke-width="2"/>
+    <text x="-40" y="135" font-family="Arial" font-size="10" text-anchor="middle" fill="#856404">right_knee_joint</text>
+
+    <!-- Right Shin -->
+    <line x1="-40" y1="120" x2="-40" y2="200" stroke="#dc3545" stroke-width="8" stroke-linecap="round"/>
+    <text x="-50" y="160" font-family="Arial" font-size="10" text-anchor="middle" fill="#dc3545">right_lower_leg</text>
+
+    <!-- Right Foot -->
+    <rect x="-60" y="200" width="40" height="15" rx="5" fill="#6f42c1" stroke="#5a2f91" stroke-width="2"/>
+    <text x="-40" y="225" font-family="Arial" font-size="10" text-anchor="middle" fill="#6f42c1">right_foot</text>
+
+    <!-- Hip Joint -->
+    <circle cx="0" cy="40" r="10" fill="#fff3cd" stroke="#856404" stroke-width="2"/>
+    <text x="0" y="55" font-family="Arial" font-size="10" text-anchor="middle" fill="#856404">hip_joints</text>
+  </g>
+
+  <!-- Legend -->
+  <g id="legend" transform="translate(50, 550)">
+    <rect x="0" y="0" width="300" height="180" fill="white" stroke="#6c757d" stroke-width="1"/>
+    <text x="150" y="20" font-family="Arial" font-size="14" text-anchor="middle" fill="#212529">URDF Components</text>
+
+    <rect x="10" y="30" width="20" height="10" fill="#d1ecf1" stroke="#0c5460"/>
+    <text x="40" y="40" font-family="Arial" font-size="12" fill="#212529">Link (Body Part)</text>
+
+    <line x1="10" y1="55" x2="30" y2="55" stroke="#28a745" stroke-width="8"/>
+    <text x="40" y="60" font-family="Arial" font-size="12" fill="#212529">Upper Arm Link</text>
+
+    <line x1="10" y1="75" x2="30" y2="75" stroke="#dc3545" stroke-width="8"/>
+    <text x="40" y="80" font-family="Arial" font-size="12" fill="#212529">Leg Link</text>
+
+    <circle cx="20" cy="105" r="8" fill="#fff3cd" stroke="#856404" stroke-width="2"/>
+    <text x="40" y="110" font-family="Arial" font-size="12" fill="#212529">Joint</text>
+
+    <rect x="10" y="125" width="20" height="10" rx="5" fill="#6f42c1" stroke="#5a2f91" stroke-width="2"/>
+    <text x="40" y="130" font-family="Arial" font-size="12" fill="#212529">Foot Link</text>
+  </g>
+
+  <!-- Explanation -->
+  <g id="explanation" transform="translate(400, 600)">
+    <rect x="-175" y="0" width="350" height="120" fill="white" stroke="#6c757d" stroke-width="1"/>
+    <text x="0" y="20" font-family="Arial" font-size="14" text-anchor="middle" fill="#212529">Humanoid URDF Structure</text>
+    <text x="0" y="40" font-family="Arial" font-size="12" text-anchor="middle" fill="#212529">Links (body parts) are connected by joints</text>
+    <text x="0" y="60" font-family="Arial" font-size="12" text-anchor="middle" fill="#212529">Each link has visual, collision, and inertial properties</text>
+    <text x="0" y="80" font-family="Arial" font-size="12" text-anchor="middle" fill="#212529">Joints define how links can move relative to each other</text>
+    <text x="0" y="100" font-family="Arial" font-size="12" text-anchor="middle" fill="#212529">URDF describes robot structure in XML format</text>
+  </g>
+</svg>
