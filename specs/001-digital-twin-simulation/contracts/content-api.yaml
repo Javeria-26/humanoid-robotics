@@ -1,0 +1,103 @@
+# Content API Contract: Digital Twin Simulation Module
+
+## Overview
+This contract defines the API for managing educational content related to the digital twin simulation module.
+
+## Base URL
+`https://api.robosim.edu/v1`
+
+## Authentication
+All endpoints require a valid API key in the header:
+`Authorization: Bearer {API_KEY}`
+
+## Endpoints
+
+### GET /modules/{moduleId}
+Retrieve module information
+
+**Path Parameters:**
+- moduleId: String - The unique identifier for the module
+
+**Response:**
+```json
+{
+  "id": "001-digital-twin-simulation",
+  "title": "Digital Twin Simulation Research Module",
+  "description": "Physics-based digital twin simulation using Gazebo and Unity",
+  "targetAudience": ["students", "educators"],
+  "learningObjectives": [
+    "Understand digital twin concepts in robotics",
+    "Learn physics simulation with Gazebo",
+    "Explore high-fidelity visualization with Unity",
+    "Understand sensor simulation techniques"
+  ],
+  "duration": 180,
+  "createdAt": "2025-01-17T00:00:00Z",
+  "updatedAt": "2025-01-17T00:00:00Z"
+}
+```
+
+### GET /modules/{moduleId}/chapters
+Retrieve all chapters in a module
+
+**Path Parameters:**
+- moduleId: String - The unique identifier for the module
+
+**Response:**
+```json
+{
+  "chapters": [
+    {
+      "id": "ch1-digital-twins-robotics",
+      "title": "Digital Twins in Robotics",
+      "order": 1,
+      "content": "Chapter content in Markdown format...",
+      "learningOutcomes": [
+        "Define digital twins",
+        "Explain role in robotics simulation",
+        "Identify key benefits"
+      ],
+      "duration": 45
+    },
+    {
+      "id": "ch2-physics-gazebo",
+      "title": "Physics Simulation (Gazebo)",
+      "order": 2,
+      "content": "Chapter content in Markdown format...",
+      "learningOutcomes": [
+        "Understand environment modeling",
+        "Explain gravity and force simulation",
+        "Describe collision detection"
+      ],
+      "duration": 45
+    }
+  ]
+}
+```
+
+### GET /sources
+Search research sources
+
+**Query Parameters:**
+- topic: String - Topic to search for
+- yearFrom: Integer - Minimum publication year
+- yearTo: Integer - Maximum publication year
+- type: String - Source type (peer-reviewed, conference, etc.)
+
+**Response:**
+```json
+{
+  "sources": [
+    {
+      "id": "source-001",
+      "title": "Digital twin-driven robotic manufacturing systems",
+      "authors": ["Lu, Q.", "Chen, Y.", "Wang, L."],
+      "year": 2021,
+      "journal": "International Journal of Production Research",
+      "doi": "10.1080/00207543.2020.1847337",
+      "type": "peer-reviewed",
+      "relevance": "Discusses digital twin applications in robotics"
+    }
+  ]
+}
+```

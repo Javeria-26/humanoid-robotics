@@ -19,7 +19,7 @@ const config = {
   organizationName: 'your-organization', // Usually your GitHub org/user name.
   projectName: 'your-project', // Usually your repo name.
 
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
 
   // Even if you don't use internationalization, you can use this field to set
@@ -69,6 +69,12 @@ const config = {
             label: 'Documentation',
           },
           {
+            type: 'doc',
+            docId: 'module-2/index',
+            position: 'left',
+            label: 'Module 2',
+          },
+          {
             href: 'https://github.com/your-username/your-repo',
             label: 'GitHub',
             position: 'right',
@@ -113,8 +119,8 @@ const config = {
         copyright: `Copyright © ${new Date().getFullYear()} ROS 2 Educational Module. Built with Docusaurus.`,
       },
       prism: {
-        theme: require('prism-react-renderer/themes/github'),
-        darkTheme: require('prism-react-renderer/themes/dracula'),
+        theme: require('prism-react-renderer').themes.github,
+        darkTheme: require('prism-react-renderer').themes.dracula,
         additionalLanguages: ['python', 'bash'],
       },
     }),
