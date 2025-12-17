@@ -31,5 +31,18 @@ module.exports = {
         'modules/ros2-nervous-system/urdf-humanoids',
       ],
     },
+    {
+      type: 'category',
+      label: 'Digital Twin Simulation Module',
+      items: [
+        'modules/module-2/index',
+        'modules/module-2/digital-twins-robotics',
+        'modules/module-2/physics-simulation',
+        'modules/module-2/high-fidelity-env',
+        'modules/module-2/sensor-simulation',
+        'modules/module-2/glossary',
+        'modules/module-2/assessment-questions',
+      ],
+    },
   ],
 };

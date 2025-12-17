@@ -55,6 +55,12 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
           },
           {
             type: 'doc',
+            docId: 'modules/module-2/index',
+            position: 'left',
+            label: 'Digital Twin Module',
+          },
+          {
+            type: 'doc',
             docId: 'intro',
             position: 'left',
             label: 'Tutorial',
@@ -76,6 +82,10 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
               {
                 label: 'ROS 2 Module',
                 to: '/docs/modules/ros2-nervous-system/index',
+              },
+              {
+                label: 'Digital Twin Module',
+                to: '/docs/modules/module-2/index',
               },
               {
                 label: 'Tutorial',
