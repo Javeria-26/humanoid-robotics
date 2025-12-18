@@ -4,8 +4,8 @@
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'ROS 2 Educational Module',
-  tagline: 'ROS 2 as the Robotic Nervous System',
+  title: 'AI-Robot Brain Research Module',
+  tagline: 'Advanced perception, training, and navigation using NVIDIA Isaac',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -56,23 +56,35 @@ const config = {
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: 'ROS 2 Educational Module',
+        title: 'ROS 2 Educational Modules',
         logo: {
-          alt: 'ROS 2 Logo',
-          src: 'img/ros2-logo.svg', // You can add a ROS 2 logo here
+          alt: 'ROS 2 Educational Modules',
+          src: 'img/favicon.ico', // Using favicon as logo
         },
         items: [
           {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
             position: 'left',
-            label: 'Documentation',
+            label: 'Module 1',
           },
           {
-            type: 'doc',
-            docId: 'module-2/index',
+            type: 'docSidebar',
+            sidebarId: 'module2Sidebar',
             position: 'left',
             label: 'Module 2',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'aiRobotBrainSidebar',
+            position: 'left',
+            label: 'Module 3',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'vlaModuleSidebar',
+            position: 'left',
+            label: 'Module 4',
           },
           {
             href: 'https://github.com/your-username/your-repo',
@@ -88,8 +100,20 @@ const config = {
             title: 'Docs',
             items: [
               {
-                label: 'Tutorial',
-                to: '/docs/modules/ros2-nervous-system',
+                label: 'Module 1: ROS 2 Nervous System',
+                to: '/docs/modules/ros2-nervous-system/index',
+              },
+              {
+                label: 'Module 2: Digital Twin Simulation',
+                to: '/docs/module-2/index',
+              },
+              {
+                label: 'Module 3: AI-Robot Brain',
+                to: '/docs/ai-robot-brain/chapter-1-overview',
+              },
+              {
+                label: 'Module 4: VLA Research',
+                to: '/docs/module-4-vla/overview',
               },
             ],
           },
@@ -97,8 +121,8 @@ const config = {
             title: 'Community',
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/ros2',
+                label: 'NVIDIA Developer Forums',
+                href: 'https://forums.developer.nvidia.com/',
               },
               {
                 label: 'ROS Discourse',
@@ -116,12 +140,12 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} ROS 2 Educational Module. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} ROS 2 Educational Modules. Built with Docusaurus.`,
       },
       prism: {
         theme: require('prism-react-renderer').themes.github,
         darkTheme: require('prism-react-renderer').themes.dracula,
-        additionalLanguages: ['python', 'bash'],
+        additionalLanguages: ['python', 'bash', 'json'],
       },
     }),
 };
