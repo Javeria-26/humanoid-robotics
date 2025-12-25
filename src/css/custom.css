@@ -6,3 +6,1013 @@
  */
 
 /* You can override the default Docusaurus styles here. */
+
+/* CSS Custom Properties for Enhanced Dark Mode with Layered Gradients */
+:root {
+  /* Primary Colors - Deep Space Violet */
+  --ifm-color-primary: #8b5cf6; /* Violet accent */
+  --ifm-color-primary-dark: #7c3aed; /* Darker violet */
+  --ifm-color-primary-darker: #6d28d9; /* Even darker violet */
+  --ifm-color-primary-darkest: #5b21b6; /* Darkest violet */
+  --ifm-color-primary-light: #a78bfa; /* Lighter violet */
+  --ifm-color-primary-lighter: #c4b5fd; /* Even lighter violet */
+  --ifm-color-primary-lightest: #ddd6fe; /* Lightest violet */
+
+  /* Soft Blue Theme */
+  --ifm-background-color: linear-gradient(135deg, #e6f2ff 0%, #cce6ff 25%, #b3d9ff 50%, #cce6ff 100%); /* Soft blue gradient */
+  --ifm-background-surface-color: rgba(204, 230, 255, 0.85); /* Slightly darker blue surface with transparency */
+  --ifm-background-surface-alt: rgba(179, 217, 255, 0.7); /* Alternative slightly darker blue surface */
+  --ifm-background-overlay: rgba(204, 230, 255, 0.95); /* Overlay for modals/dropdowns */
+
+  /* Text Colors */
+  --ifm-color-content: #003366; /* Main text - dark blue for contrast */
+  --ifm-color-content-secondary: #336699; /* Subtle text - medium blue */
+  --ifm-color-content-tertiary: #6699cc; /* Tertiary text - lighter blue */
+  --ifm-color-content-inverse: #e2e8f0; /* Inverse text for dark themes */
+
+  /* Layered Gradient Colors - for depth and dimension */
+  --ifm-gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --ifm-gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --ifm-gradient-tertiary: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  --ifm-gradient-accent: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+  --ifm-gradient-dark: linear-gradient(135deg, #141e30 0%, #243b55 100%);
+  --ifm-gradient-space: linear-gradient(135deg, #2d3748 0%, #1a202c 50%, #0f172a 100%);
+
+  /* Accent Colors - Cyberpunk inspired */
+  --ifm-color-accent-purple: #b86bff; /* Secondary accents */
+  --ifm-color-accent-teal: #00ffcc; /* Interactive elements */
+  --ifm-color-accent-cyan: #00ffff; /* Cyber highlights */
+  --ifm-color-accent-pink: #ff6b6b; /* Alert highlights */
+  --ifm-color-accent-blue: #4fc3f7; /* Info highlights */
+  --ifm-color-accent-green: #69f0ae; /* Success highlights */
+
+  /* Success, Warning, Error - Enhanced for dark mode */
+  --ifm-color-success: #69f0ae; /* Brighter success green */
+  --ifm-color-warning: #ffdd40; /* Brighter warning yellow */
+  --ifm-color-error: #ff6b6b; /* Error states */
+  --ifm-color-info: #4fc3f7; /* Info states */
+
+  /* Surface Colors - Layered depth */
+  --ifm-surface-level-1: rgba(15, 14, 23, 0.85); /* Primary surface */
+  --ifm-surface-level-2: rgba(26, 25, 44, 0.7); /* Secondary surface */
+  --ifm-surface-level-3: rgba(30, 29, 50, 0.6); /* Tertiary surface */
+  --ifm-surface-level-4: rgba(35, 34, 60, 0.5); /* Quaternary surface */
+
+  /* Border Colors */
+  --ifm-border-color: rgba(255, 255, 255, 0.1); /* Subtle borders */
+  --ifm-border-color-light: rgba(255, 255, 255, 0.05); /* Lighter borders */
+  --ifm-border-color-dark: rgba(255, 255, 255, 0.2); /* Darker borders */
+
+  /* Spacing System */
+  --ifm-spacing-half: 0.5rem; /* 4px */
+  --ifm-spacing: 1rem; /* 8px */
+  --ifm-spacing-double: 1.5rem; /* 12px */
+  --ifm-spacing-triple: 2rem; /* 16px */
+  --ifm-spacing-four: 3rem; /* 24px */
+  --ifm-spacing-five: 4rem; /* 32px */
+  --ifm-spacing-six: 6rem; /* 48px */
+  --ifm-spacing-seven: 8rem; /* 64px */
+
+  /* Typography */
+  --ifm-font-family-base: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --ifm-font-family-monospace: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+
+  /* Responsive Typography */
+  --ifm-h1-font-size: clamp(2rem, 5vw, 4rem); /* Hero titles */
+  --ifm-h2-font-size: clamp(1.5rem, 4vw, 3rem); /* Section headings */
+  --ifm-h3-font-size: clamp(1.25rem, 3vw, 2rem); /* Subsection headings */
+  --ifm-font-size-base: clamp(1rem, 2.5vw, 1.125rem); /* Main content */
+
+  /* Line heights */
+  --ifm-line-height-headings: 1.4;
+  --ifm-line-height-base: 1.6;
+
+  /* Border radius */
+  --ifm-global-radius: 8px;
+  --ifm-global-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  /* Z-index levels */
+  --ifm-z-index-background: 1;
+  --ifm-z-index-content: 2;
+  --ifm-z-index-overlay: 3;
+}
+
+/* Apply gradient background to body */
+body {
+  background: linear-gradient(135deg, #6e45e2 0%, #885ee4 25%, #a778f1 50%, #c4b5fd 100%);
+  background-attachment: fixed;
+  color: var(--ifm-color-content);
+}
+
+/* For light mode, maintain violet theme with enhanced contrast */
+[data-theme='light'] {
+  --ifm-color-content: #1a202c; /* Dark gray for better readability */
+  --ifm-color-content-secondary: #4a5568; /* Muted secondary text */
+  --ifm-color-content-tertiary: #718096; /* Tertiary text */
+  --ifm-background-color: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 25%, #cbd5e0 50%, #a0aec0 100%);
+  --ifm-background-surface-color: #ffffff; /* Clean white surface */
+  --ifm-background-surface-alt: #f7fafc; /* Light alternative surface */
+  --ifm-background-overlay: rgba(255, 255, 255, 0.95); /* Light overlay */
+
+  /* Surface Colors for Light Mode */
+  --ifm-surface-level-1: #ffffff; /* Primary surface */
+  --ifm-surface-level-2: #f8fafc; /* Secondary surface */
+  --ifm-surface-level-3: #edf2f7; /* Tertiary surface */
+  --ifm-surface-level-4: #e2e8f0; /* Quaternary surface */
+
+  /* Border Colors for Light Mode */
+  --ifm-border-color: #e2e8f0; /* Subtle borders */
+  --ifm-border-color-light: #f7fafc; /* Lighter borders */
+  --ifm-border-color-dark: #cbd5e0; /* Darker borders */
+}
+
+/* Enhanced layered background patterns for 3D depth */
+/* Base pattern - subtle particle field */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(circle at 15% 25%, rgba(139, 92, 246, 0.08) 0px, transparent 1px) 0 0,
+    radial-gradient(circle at 85% 75%, rgba(0, 255, 204, 0.08) 0px, transparent 1px) 0 0,
+    radial-gradient(circle at 50% 50%, rgba(79, 195, 247, 0.06) 0px, transparent 1px) 0 0,
+    radial-gradient(circle at 20% 80%, rgba(240, 147, 251, 0.06) 0px, transparent 1px) 0 0,
+    radial-gradient(circle at 75% 20%, rgba(184, 107, 255, 0.06) 0px, transparent 1px) 0 0;
+  background-size: 200px 200px;
+  animation: floatPattern 30s linear infinite;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.6;
+}
+
+/* Mid-layer geometric patterns */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    linear-gradient(45deg, transparent 49%, rgba(139, 92, 246, 0.05) 50%, transparent 51%) 0 0,
+    linear-gradient(-45deg, transparent 49%, rgba(0, 255, 204, 0.05) 50%, transparent 51%) 0 0,
+    linear-gradient(135deg, transparent 49%, rgba(79, 195, 247, 0.03) 50%, transparent 51%) 0 0,
+    linear-gradient(-135deg, transparent 49%, rgba(240, 147, 251, 0.03) 50%, transparent 51%) 0 0;
+  background-size: 120px 120px;
+  animation: slidePattern 25s linear infinite alternate;
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Additional depth layer - animated gradient mesh */
+body::backdrop {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(139, 92, 246, 0.1) 0%, transparent 20%) 0 0,
+    radial-gradient(circle at 70% 70%, rgba(0, 255, 204, 0.1) 0%, transparent 20%) 0 0;
+  animation: meshPattern 40s ease-in-out infinite;
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: -2;
+}
+
+/* Extra depth layer using a pseudo-element on the html element */
+html::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    conic-gradient(from 0deg at 25% 25%, transparent 0deg, rgba(139, 92, 246, 0.05) 90deg, transparent 180deg) 0 0,
+    conic-gradient(from 180deg at 75% 75%, transparent 0deg, rgba(0, 255, 204, 0.05) 90deg, transparent 180deg) 0 0;
+  animation: rotatePattern 60s linear infinite;
+  opacity: 0.2;
+  pointer-events: none;
+  z-index: -3;
+}
+
+/* Animation for floating particle pattern */
+@keyframes floatPattern {
+  0% {
+    background-position: 0 0, 0 0, 0 0, 0 0, 0 0;
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    background-position: 100px 100px, -100px -100px, 50px -50px, -50px 150px, 150px -50px;
+    transform: translate(5px, -5px) scale(1.02);
+  }
+  50% {
+    background-position: -150px 50px, 150px -150px, -100px 100px, 100px -100px, -50px 50px;
+    transform: translate(-5px, 5px) scale(0.98);
+  }
+  75% {
+    background-position: 50px -150px, -50px 150px, 150px 50px, -150px -50px, 100px 100px;
+    transform: translate(3px, 3px) scale(1.01);
+  }
+  100% {
+    background-position: 0 0, 0 0, 0 0, 0 0, 0 0;
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+/* Animation for sliding geometric pattern */
+@keyframes slidePattern {
+  0% {
+    background-position: 0 0, 0 0, 0 0, 0 0;
+  }
+  100% {
+    background-position: 120px 120px, -120px -120px, 60px -60px, -60px 60px;
+  }
+}
+
+/* Animation for gradient mesh */
+@keyframes meshPattern {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0.3;
+  }
+  25% {
+    transform: translate(10px, 5px) rotate(1deg);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translate(-5px, 10px) rotate(-1deg);
+    opacity: 0.2;
+  }
+  75% {
+    transform: translate(5px, -10px) rotate(0.5deg);
+    opacity: 0.5;
+  }
+}
+
+/* Animation for rotating conic patterns */
+@keyframes rotatePattern {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Performance optimization for animations */
+@media (prefers-reduced-motion: no-preference) {
+  body::before,
+  body::after,
+  html::before,
+  .gradientMesh,
+  .particleLayer,
+  .depthLayer,
+  .geometricLayer,
+  .movingPattern,
+  .movingPattern2,
+  .depthPattern {
+    will-change: transform, background-position, opacity;
+  }
+}
+
+/* High performance animation settings */
+@media (min-width: 768px) {
+  body::before,
+  body::after,
+  html::before {
+    /* Use hardware acceleration for larger screens */
+    transform: translateZ(0);
+  }
+}
+
+/* Light mode pattern adjustments */
+[data-theme='light'] body::before {
+  background:
+    radial-gradient(circle at 15% 25%, rgba(139, 92, 246, 0.05) 0px, transparent 1px) 0 0,
+    radial-gradient(circle at 85% 75%, rgba(0, 255, 204, 0.05) 0px, transparent 1px) 0 0,
+    radial-gradient(circle at 50% 50%, rgba(79, 195, 247, 0.03) 0px, transparent 1px) 0 0;
+  opacity: 0.4;
+}
+
+[data-theme='light'] body::after {
+  background:
+    linear-gradient(45deg, transparent 49%, rgba(139, 92, 246, 0.03) 50%, transparent 51%) 0 0,
+    linear-gradient(-45deg, transparent 49%, rgba(0, 255, 204, 0.03) 50%, transparent 51%) 0 0;
+  opacity: 0.2;
+}
+
+/* Enhanced glass effect containers with layered depth */
+.container {
+  background: var(--ifm-surface-level-2);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: var(--ifm-global-radius);
+  border: 1px solid var(--ifm-border-color);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.2),
+    inset 0 0 10px rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  margin: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Enhanced glass effect with gradient border */
+.container::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: var(--ifm-gradient-primary);
+  border-radius: calc(var(--ifm-global-radius) + 2px);
+  z-index: -1;
+  opacity: 0.2;
+}
+
+/* Override default Docusaurus containers to match theme */
+.main-container {
+  background: var(--ifm-surface-level-1) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid var(--ifm-border-color) !important;
+}
+
+/* Enhanced glass effect classes for different depth levels */
+.glass-level-1 {
+  background: var(--ifm-surface-level-1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--ifm-border-color);
+  border-radius: var(--ifm-global-radius);
+}
+
+.glass-level-2 {
+  background: var(--ifm-surface-level-2);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--ifm-border-color);
+  border-radius: var(--ifm-global-radius);
+}
+
+.glass-level-3 {
+  background: var(--ifm-surface-level-3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--ifm-border-color-light);
+  border-radius: var(--ifm-global-radius);
+}
+
+.glass-level-4 {
+  background: var(--ifm-surface-level-4);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid var(--ifm-border-color-light);
+  border-radius: var(--ifm-global-radius);
+}
+
+/* Gradient border effect for premium containers */
+.glass-gradient-border {
+  position: relative;
+  background: var(--ifm-surface-level-2);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: var(--ifm-global-radius);
+  padding: 2rem;
+  margin: 1rem;
+}
+
+.glass-gradient-border::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: var(--ifm-global-radius);
+  padding: 1px;
+  background: var(--ifm-gradient-primary);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  z-index: -1;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  body::before,
+  body::after,
+  html::before {
+    animation: none;
+  }
+
+  .container::before,
+  .glass-gradient-border::before {
+    animation: none;
+  }
+}
+
+/* Responsive Breakpoints System */
+/* Mobile: ≤640px - Single column, touch-optimized */
+@media (max-width: 640px) {
+  :root {
+    --ifm-spacing-half: 0.25rem; /* Smaller spacing on mobile */
+    --ifm-spacing: 0.5rem;
+    --ifm-spacing-double: 1rem;
+  }
+
+  .hero__title {
+    font-size: var(--ifm-h1-font-size);
+    text-align: center;
+  }
+
+  .hero__subtitle {
+    text-align: center;
+  }
+
+  .button {
+    margin-bottom: var(--ifm-spacing);
+    width: 100%;
+  }
+
+  .container {
+    padding: var(--ifm-spacing);
+  }
+}
+
+/* Tablet: 641px-1024px - Adaptable columns, medium spacing */
+@media (min-width: 641px) and (max-width: 1024px) {
+  :root {
+    --ifm-spacing: 1rem;
+    --ifm-spacing-double: 1.5rem;
+  }
+
+  .container {
+    padding: var(--ifm-spacing-double);
+  }
+}
+
+/* Desktop: 1025px+ - Multi-column layouts */
+@media (min-width: 1025px) {
+  :root {
+    --ifm-spacing: 1.5rem;
+    --ifm-spacing-double: 2rem;
+  }
+
+  .container {
+    padding: var(--ifm-spacing-triple);
+  }
+}
+
+/* Extra Large Desktop: 1400px+ - Full premium experience */
+@media (min-width: 1400px) {
+  :root {
+    --ifm-spacing-triple: 3rem;
+    --ifm-spacing-four: 4rem;
+  }
+}
+
+/* Responsive Spacing Utility Classes */
+.margin-half { margin: var(--ifm-spacing-half) !important; }
+.margin { margin: var(--ifm-spacing) !important; }
+.margin-double { margin: var(--ifm-spacing-double) !important; }
+.margin-triple { margin: var(--ifm-spacing-triple) !important; }
+.margin-four { margin: var(--ifm-spacing-four) !important; }
+
+.margin-top-half { margin-top: var(--ifm-spacing-half) !important; }
+.margin-top { margin-top: var(--ifm-spacing) !important; }
+.margin-top-double { margin-top: var(--ifm-spacing-double) !important; }
+.margin-top-triple { margin-top: var(--ifm-spacing-triple) !important; }
+.margin-top-four { margin-top: var(--ifm-spacing-four) !important; }
+
+.margin-bottom-half { margin-bottom: var(--ifm-spacing-half) !important; }
+.margin-bottom { margin-bottom: var(--ifm-spacing) !important; }
+.margin-bottom-double { margin-bottom: var(--ifm-spacing-double) !important; }
+.margin-bottom-triple { margin-bottom: var(--ifm-spacing-triple) !important; }
+.margin-bottom-four { margin-bottom: var(--ifm-spacing-four) !important; }
+
+.padding-half { padding: var(--ifm-spacing-half) !important; }
+.padding { padding: var(--ifm-spacing) !important; }
+.padding-double { padding: var(--ifm-spacing-double) !important; }
+.padding-triple { padding: var(--ifm-spacing-triple) !important; }
+.padding-four { padding: var(--ifm-spacing-four) !important; }
+
+.padding-top-half { padding-top: var(--ifm-spacing-half) !important; }
+.padding-top { padding-top: var(--ifm-spacing) !important; }
+.padding-top-double { padding-top: var(--ifm-spacing-double) !important; }
+.padding-top-triple { padding-top: var(--ifm-spacing-triple) !important; }
+.padding-top-four { padding-top: var(--ifm-spacing-four) !important; }
+
+.padding-bottom-half { padding-bottom: var(--ifm-spacing-half) !important; }
+.padding-bottom { padding-bottom: var(--ifm-spacing) !important; }
+.padding-bottom-double { padding-bottom: var(--ifm-spacing-double) !important; }
+.padding-bottom-triple { padding-bottom: var(--ifm-spacing-triple) !important; }
+.padding-bottom-four { padding-bottom: var(--ifm-spacing-four) !important; }
+
+/* Responsive Spacing Adjustments */
+@media (max-width: 640px) {
+  .margin-responsive { margin: var(--ifm-spacing-half) !important; }
+  .margin-top-responsive { margin-top: var(--ifm-spacing-half) !important; }
+  .margin-bottom-responsive { margin-bottom: var(--ifm-spacing-half) !important; }
+  .padding-responsive { padding: var(--ifm-spacing-half) !important; }
+  .padding-top-responsive { padding-top: var(--ifm-spacing-half) !important; }
+  .padding-bottom-responsive { padding-bottom: var(--ifm-spacing-half) !important; }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .margin-responsive { margin: var(--ifm-spacing) !important; }
+  .margin-top-responsive { margin-top: var(--ifm-spacing) !important; }
+  .margin-bottom-responsive { margin-bottom: var(--ifm-spacing) !important; }
+  .padding-responsive { padding: var(--ifm-spacing) !important; }
+  .padding-top-responsive { padding-top: var(--ifm-spacing) !important; }
+  .padding-bottom-responsive { padding-bottom: var(--ifm-spacing) !important; }
+}
+
+@media (min-width: 1025px) {
+  .margin-responsive { margin: var(--ifm-spacing-double) !important; }
+  .margin-top-responsive { margin-top: var(--ifm-spacing-double) !important; }
+  .margin-bottom-responsive { margin-bottom: var(--ifm-spacing-double) !important; }
+  .padding-responsive { padding: var(--ifm-spacing-double) !important; }
+  .padding-top-responsive { padding-top: var(--ifm-spacing-double) !important; }
+  .padding-bottom-responsive { padding-bottom: var(--ifm-spacing-double) !important; }
+}
+
+/* Typography System with clamp() scaling */
+.hero__title {
+  font-size: var(--ifm-h1-font-size) !important;
+  font-weight: 600;
+  line-height: var(--ifm-line-height-headings);
+}
+
+.hero__subtitle {
+  font-size: var(--ifm-h2-font-size) !important;
+  font-weight: 400;
+  line-height: var(--ifm-line-height-headings);
+  margin-bottom: var(--ifm-spacing-triple);
+}
+
+h1 {
+  font-size: var(--ifm-h1-font-size);
+  font-weight: 600;
+  line-height: var(--ifm-line-height-headings);
+}
+
+h2 {
+  font-size: var(--ifm-h2-font-size);
+  font-weight: 500;
+  line-height: var(--ifm-line-height-headings);
+}
+
+h3 {
+  font-size: var(--ifm-h3-font-size);
+  font-weight: 500;
+  line-height: var(--ifm-line-height-headings);
+}
+
+p {
+  font-size: var(--ifm-font-size-base);
+  line-height: var(--ifm-line-height-base);
+  color: var(--ifm-color-content);
+}
+
+/* Responsive typography for different screen sizes */
+@media (max-width: 640px) {
+  .hero__title {
+    font-size: clamp(1.5rem, 4vw, 2.5rem) !important;
+  }
+
+  .hero__subtitle {
+    font-size: clamp(1rem, 3vw, 1.5rem) !important;
+  }
+
+  h1 { font-size: clamp(1.5rem, 4vw, 2.5rem); }
+  h2 { font-size: clamp(1.25rem, 3.5vw, 2rem); }
+  h3 { font-size: clamp(1.1rem, 3vw, 1.5rem); }
+  p { font-size: clamp(0.9rem, 2.5vw, 1rem); }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .hero__title {
+    font-size: clamp(1.8rem, 4.5vw, 3rem) !important;
+  }
+
+  .hero__subtitle {
+    font-size: clamp(1.2rem, 3.5vw, 1.8rem) !important;
+  }
+
+  h1 { font-size: clamp(1.8rem, 4.5vw, 3rem); }
+  h2 { font-size: clamp(1.5rem, 4vw, 2.3rem); }
+  h3 { font-size: clamp(1.25rem, 3.5vw, 1.8rem); }
+  p { font-size: clamp(1rem, 2.8vw, 1.125rem); }
+}
+
+/* Accessibility Features */
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .button {
+    transition: none;
+  }
+
+  /* Prevent any animations on background elements */
+  .backgroundLayer,
+  .gradientMesh,
+  .particleLayer {
+    animation: none !important;
+  }
+}
+
+/* Focus indicators for keyboard navigation */
+button:focus,
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --ifm-global-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .button {
+    border: 2px solid var(--ifm-color-content);
+  }
+}
+
+/* Screen reader only content */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Touch-friendly elements with minimum 44px touch targets */
+.button {
+  min-height: 44px !important;
+  min-width: 44px !important;
+  padding: 12px 20px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+}
+
+/* Ensure links have adequate touch targets */
+a {
+  min-height: 44px;
+  min-width: 44px;
+  padding: 12px;
+  display: inline-block;
+}
+
+/* Specific touch targets for navigation */
+.navbar__link {
+  min-height: 44px;
+  padding: 12px 16px;
+}
+
+/* Touch targets for feature cards */
+.features .col {
+  min-height: 44px;
+  padding: 22px; /* Provides adequate touch target area */
+}
+
+/* Ensure form elements have proper touch targets */
+input,
+select,
+textarea {
+  min-height: 44px;
+  padding: 12px;
+  font-size: 16px; /* Ensures adequate size for touch interaction */
+}
+
+/* Mobile-specific touch enhancements */
+@media (max-width: 768px) {
+  .button {
+    min-height: 48px;
+    min-width: 48px;
+    padding: 14px 24px !important;
+  }
+
+  .navbar__item {
+    padding: 12px 16px;
+  }
+}
+
+/* Prevent horizontal scrolling issues */
+html {
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+.container {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Ensure all elements respect container width */
+img,
+video,
+iframe,
+embed,
+object {
+  max-width: 100%;
+  height: auto;
+}
+
+pre,
+code {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* Prevent tables from causing horizontal scroll */
+table {
+  display: block;
+  overflow-x: auto;
+  width: 100%;
+  max-width: fit-content;
+}
+
+/* Footer styling - black background */
+.footer {
+  background-color: #000000 !important;
+  color: var(--ifm-color-content) !important;
+}
+
+.footer__title {
+  color: var(--ifm-color-content) !important;
+}
+
+.footer__link-item {
+  color: var(--ifm-color-content-secondary) !important;
+}
+
+.footer__link-item:hover {
+  color: var(--ifm-color-primary) !important;
+}
+
+.footer--dark {
+  --ifm-footer-background-color: #000000;
+  --ifm-footer-color: var(--ifm-color-content);
+  --ifm-footer-link-color: var(--ifm-color-content-secondary);
+}
+
+/* Clean rectangular button styles with soft blue background */
+.button {
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+  position: relative;
+  overflow: hidden !important; /* Prevent overflow while maintaining clean design */
+  min-height: 50px !important;
+  min-width: 220px !important; /* Increased width */
+  padding: 14px 40px !important; /* Increased padding */
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  white-space: nowrap !important; /* Prevent text wrapping */
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  border-radius: 6px !important;
+  text-decoration: none !important;
+  line-height: 1.5 !important;
+  max-width: 100% !important;
+  border: none !important;
+  cursor: pointer !important;
+  box-sizing: border-box !important;
+}
+
+.button:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Primary button with soft blue background */
+.button--primary {
+  background: #cce6ff !important; /* Soft blue background */
+  color: #003366 !important;
+  border: 1px solid #99ccff !important;
+}
+
+.button--primary:hover {
+  background: #99ccff !important; /* Darker blue on hover */
+  color: #001a33 !important;
+  box-shadow: 0 6px 20px rgba(153, 204, 255, 0.4) !important;
+}
+
+/* Secondary button with soft blue background */
+.button--secondary {
+  background: #cce6ff !important; /* Soft blue background */
+  color: #003366 !important;
+  border: 1px solid #99ccff !important;
+}
+
+.button--secondary:hover {
+  background: #99ccff !important; /* Darker blue on hover */
+  color: #001a33 !important;
+  box-shadow: 0 6px 20px rgba(153, 204, 255, 0.4) !important;
+}
+
+/* Large button sizing for consistency */
+.button--lg {
+  min-height: 54px !important;
+  padding: 16px 44px !important;
+  font-size: 1.1rem !important;
+  min-width: 240px !important; /* Increased width */
+}
+
+/* Responsive button adjustments */
+@media (max-width: 640px) {
+  .button {
+    min-height: 50px !important;
+    min-width: 200px !important; /* Increased width for mobile */
+    padding: 14px 32px !important;
+    font-size: 1rem !important;
+    white-space: nowrap !important;
+  }
+
+  .button--lg {
+    min-height: 54px !important;
+    padding: 16px 36px !important;
+    font-size: 1.1rem !important;
+    min-width: 220px !important; /* Increased width for mobile */
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .button {
+    min-height: 52px !important;
+    min-width: 210px !important; /* Increased width for tablet */
+    padding: 15px 36px !important;
+    font-size: 1rem !important;
+  }
+}
+
+/* Enhanced theme toggle button styles */
+.theme-toggle {
+  transition: all 0.3s ease !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1) !important;
+  box-shadow: 0 6px 25px rgba(139, 92, 246, 0.4) !important;
+}
+
+.theme-toggle:active {
+  transform: scale(0.95) !important;
+}
+
+/* Pulse animation for theme toggle */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(139, 92, 246, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(139, 92, 246, 0);
+  }
+}
+
+.theme-toggle:focus {
+  animation: pulse 1.5s infinite;
+}
+
+.button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.button:hover::before {
+  left: 100%;
+}
+
+/* Hover effects for feature cards */
+.features .col {
+  transition: all 0.3s ease;
+}
+
+.features .col:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Subtle animations for links */
+a {
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+a:hover {
+  color: var(--ifm-color-primary);
+  text-shadow: 0 0 8px rgba(0, 243, 255, 0.5);
+}
+
+/* Hover effects for navigation items */
+.navbar__link {
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.navbar__link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--ifm-color-primary);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.navbar__link:hover::after {
+  width: 80%;
+}
+
+/* Smooth transitions for all interactive elements */
+* {
+  transition: color 0.3s ease,
+              background-color 0.3s ease,
+              border-color 0.3s ease,
+              box-shadow 0.3s ease,
+              transform 0.3s ease;
+}
+
+/* Glass morphism effects for premium feel */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--ifm-global-radius);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+.glass-effect-dark {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--ifm-global-radius);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Apply glass effect to feature cards in premium mode */
+.features .col.glass {
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* Reduced motion support for glass effects */
+@media (prefers-reduced-motion: reduce) {
+  .glass-effect,
+  .glass-effect-dark,
+  .features .col.glass {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}

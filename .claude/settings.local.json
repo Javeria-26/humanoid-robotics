@@ -1,7 +1,22 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npm run build)"
+      "Bash(npm run build)",
+      "Bash(.specify/scripts/powershell/check-prerequisites.ps1 -Json)",
+      "Bash(git checkout specs/1-geometric-background/plan.md)",
+      "Bash(git rev-parse --git-dir)",
+      "Bash(taskkill /F /IM node.exe)",
+      "Bash(npm run start)",
+      "Bash(dir docs /s)",
+      "Bash(dir docsmodules /s)",
+      "Bash(dir docsmodules)",
+      "Bash(npx docusaurus start --port 3003)",
+      "Bash(npx docusaurus start --port 3004)",
+      "Bash(npx docusaurus start --port 3005)",
+      "Bash(npx docusaurus start --port 3006)",
+      "Bash(npx docusaurus start --port 3000)",
+      "Bash(npx docusaurus start --port 3007)",
+      "Bash(npx docusaurus start --port 3001)"
     ]
   }
 }

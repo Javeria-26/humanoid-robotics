@@ -5,32 +5,40 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import styles from './index.module.css';
 import HomepageFeatures from '../components/HomepageFeatures';
+import IndigoHeading from '../components/IndigoHeading';
 
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
   return (
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
-      <div className="container">
-        <h1 className="hero__title">{siteConfig.title}</h1>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/modules/ros2-nervous-system/index">
-            Start ROS 2 Educational Module - 15min ⏱️
-          </Link>
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/modules/module-2/index"
-            style={{marginLeft: '1rem'}}>
-            Start Digital Twin Module - 20min ⏱️
-          </Link>
-          <Link
-            className="button button--outline button--lg"
-            to="/docs/intro"
-            style={{marginLeft: '1rem'}}>
-            Docusaurus Tutorial - 5min ⏱️
-          </Link>
+      {/* Indigo Background with Moving Patterns */}
+      <IndigoHeading title={siteConfig.title} subtitle={siteConfig.tagline} />
+
+      {/* Content Layer with proper z-index */}
+      <div className={styles.contentLayer}>
+        <div className="container">
+          <div className={styles.ctaSection}>
+            {/* Prominent "Start Reading" primary button with neon accent */}
+            <div className={styles.primaryButtonContainer}>
+              <Link
+                className="button button--primary button--lg"
+                to="/docs">
+                Start Reading
+              </Link>
+            </div>
+            <div className={styles.secondaryActions}>
+              <Link
+                className="button button--secondary button--lg"
+                to="/docs/modules/ros2-nervous-system/">
+                Start ROS 2 Educational Module - 15min ⏱️
+              </Link>
+              <Link
+                className="button button--secondary button--lg"
+                to="/docs/module-2/digital-twins-robotics">
+                Start Digital Twin Module - 20min ⏱️
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </header>

@@ -3,9 +3,75 @@
   align-items: center;
   padding: 2rem 0;
   width: 100%;
+  background-color: var(--ifm-background-color);
 }
 
 .featureSvg {
   height: 200px;
   width: 200px;
+  filter: invert(100%); /* For dark mode compatibility */
+}
+
+/* Responsive grid layout for feature cards */
+.features .row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  width: 100%;
+}
+
+/* Single column on mobile */
+@media (max-width: 640px) {
+  .features .row {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .featureSvg {
+    height: 150px;
+    width: 150px;
+  }
+}
+
+/* Two columns on tablet */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .features .row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+/* Three columns on desktop */
+@media (min-width: 1025px) {
+  .features .row {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+}
+
+/* Feature card styling */
+.features .col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem;
+  background-color: var(--ifm-background-surface-color);
+  border-radius: var(--ifm-global-radius);
+  box-shadow: var(--ifm-global-shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.features .col:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.features h3 {
+  color: var(--ifm-color-content);
+  margin-bottom: 1rem;
+}
+
+.features p {
+  color: var(--ifm-color-content-secondary);
+  text-align: center;
 }
