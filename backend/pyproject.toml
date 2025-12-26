@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "doc-ingestion"
+version = "0.1.0"
+description = "Document ingestion system for Docusaurus content"
+authors = [{name = "Claude Code", email = "claude@example.com"}]
+dependencies = [
+    "requests>=2.28.0",
+    "beautifulsoup4>=4.11.0",
+    "cohere>=4.0.0",
+    "qdrant-client>=1.6.0",
+    "python-dotenv>=1.0.0"
+]

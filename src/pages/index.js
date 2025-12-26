@@ -4,40 +4,54 @@ import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import styles from './index.module.css';
-import HomepageFeatures from '../components/HomepageFeatures';
-import IndigoHeading from '../components/IndigoHeading';
 
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
   return (
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
-      {/* Indigo Background with Moving Patterns */}
-      <IndigoHeading title={siteConfig.title} subtitle={siteConfig.tagline} />
-
-      {/* Content Layer with proper z-index */}
+      {/* Content Layer with AI-themed design */}
       <div className={styles.contentLayer}>
         <div className="container">
+          {/* Centered laptop/screen graphic displaying flowing code */}
+          <div className={styles.laptopGraphic}>
+            <div className={styles.screen}>
+              <div className={styles.codeLines}>
+                <div className={styles.codeLine}>function AI() {"{"}</div>
+                <div className={styles.codeLine}>&nbsp;&nbsp;const development = "spec-driven";</div>
+                <div className={styles.codeLine}>&nbsp;&nbsp;const native = true;</div>
+                <div className={styles.codeLine}>&nbsp;&nbsp;return {"{"} development, native {"}"};</div>
+                <div className={styles.codeLine}>{"}"}</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Main title with glowing text effect */}
+          <h1 className={styles.heroTitle}>
+            AI Native Software Development
+          </h1>
+
+          {/* Subtitle explaining AI-driven, spec-driven development */}
+          <p className={styles.heroSubtitle}>
+            Experience the future of software development with AI-powered tools and specification-driven methodologies that transform how we build, test, and deploy applications.
+          </p>
+
+          {/* CTA buttons: "Start Reading", "Open Chatbot", "View Architecture" */}
           <div className={styles.ctaSection}>
-            {/* Prominent "Start Reading" primary button with neon accent */}
-            <div className={styles.primaryButtonContainer}>
-              <Link
-                className="button button--primary button--lg"
-                to="/docs">
-                Start Reading
-              </Link>
-            </div>
-            <div className={styles.secondaryActions}>
-              <Link
-                className="button button--secondary button--lg"
-                to="/docs/modules/ros2-nervous-system/">
-                Start ROS 2 Educational Module - 15min ⏱️
-              </Link>
-              <Link
-                className="button button--secondary button--lg"
-                to="/docs/module-2/digital-twins-robotics">
-                Start Digital Twin Module - 20min ⏱️
-              </Link>
-            </div>
+            <Link
+              className="button button--primary button--lg"
+              to="/docs">
+              Start Reading
+            </Link>
+            <Link
+              className="button button--secondary button--lg"
+              to="/test-chatbot">
+              Open Chatbot
+            </Link>
+            <Link
+              className="button button--secondary button--lg"
+              to="/docs/modules/ros2-nervous-system/">
+              View Architecture
+            </Link>
           </div>
         </div>
       </div>
@@ -49,12 +63,9 @@ export default function Home() {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
+      title={`AI Native Software Development`}
+      description="AI-powered software development with specification-driven methodologies">
       <HomepageHeader />
-      <main>
-        <HomepageFeatures />
-      </main>
     </Layout>
   );
 }

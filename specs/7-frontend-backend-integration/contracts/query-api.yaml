@@ -1,0 +1,154 @@
+openapi: 3.0.0
+info:
+  title: Book RAG Query API
+  description: API for querying the book content using RAG
+  version: 1.0.0
+servers:
+  - url: https://api.book.example.com
+    description: Production server
+  - url: https://staging-api.book.example.com
+    description: Staging server
+paths:
+  /query:
+    post:
+      summary: Submit a query to the RAG system
+      description: Submit a user question to the backend RAG system and receive a contextual response
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueryRequest'
+      responses:
+        '200':
+          description: Successful response from the RAG system
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryResponse'
+        '400':
+          description: Bad request - invalid query format
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /health:
+    get:
+      summary: Health check endpoint
+      description: Check the health status of the API
+      responses:
+        '200':
+          description: API is healthy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+components:
+  schemas:
+    QueryRequest:
+      type: object
+      required:
+        - query
+      properties:
+        query:
+          type: string
+          description: The user's question
+          example: "What are the key components of a humanoid robot?"
+        context:
+          type: object
+          description: Additional context for the query
+          properties:
+            selected_text:
+              type: string
+              description: Text selected by the user on the page
+              example: "The key components of a humanoid robot include actuators, sensors, and control systems."
+            page_info:
+              type: object
+              description: Information about the current page
+              properties:
+                url:
+                  type: string
+                  description: URL of the current page
+                title:
+                  type: string
+                  description: Title of the current page
+        session_id:
+          type: string
+          description: Session identifier for conversation context
+          example: "sess_12345"
+        metadata:
+          type: object
+          description: Additional metadata for the request
+    QueryResponse:
+      type: object
+      required:
+        - answer
+        - query_id
+        - session_id
+      properties:
+        answer:
+          type: string
+          description: The AI-generated answer to the query
+          example: "The key components of a humanoid robot include actuators for movement, sensors for perception, and control systems for coordination."
+        citations:
+          type: array
+          description: Sources referenced in the answer
+          items:
+            type: object
+            properties:
+              title:
+                type: string
+                description: Title of the source
+              url:
+                type: string
+                description: URL to the source
+              page_number:
+                type: number
+                description: Page number in the book
+        session_id:
+          type: string
+          description: Session identifier (new or existing)
+        query_id:
+          type: string
+          description: Unique identifier for this query
+        confidence:
+          type: number
+          description: Confidence score for the response (0-1)
+          minimum: 0
+          maximum: 1
+    ErrorResponse:
+      type: object
+      required:
+        - error
+        - message
+      properties:
+        error:
+          type: string
+          description: Error type
+          example: "QUERY_ERROR"
+        message:
+          type: string
+          description: Human-readable error message
+          example: "The query was too short to process"
+    HealthResponse:
+      type: object
+      required:
+        - status
+        - timestamp
+      properties:
+        status:
+          type: string
+          description: Health status
+          enum: [ok, error]
+          example: "ok"
+        timestamp:
+          type: string
+          format: date-time
+          description: Timestamp of the health check
+          example: "2025-12-25T10:00:00Z"

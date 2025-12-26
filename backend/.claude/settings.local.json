@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git fetch --all --prune)",
+      "Bash(git checkout -b 6-rag-agent-api)",
+      "Bash(mkdir -p specs/6-rag-agent-api)",
+      "Bash(./.specify/scripts/powershell/setup-plan.ps1 -Json)",
+      "Bash(./.specify/scripts/powershell/update-agent-context.ps1 -AgentType claude)",
+      "Bash(./.specify/scripts/powershell/check-prerequisites.ps1 -Json)",
+      "Bash(./.specify/scripts/powershell/check-prerequisites.ps1 -Json -RequireTasks -IncludeTasks)",
+      "Bash(./.specify/scripts/powershell/create-new-feature.ps1:*)",
+      "Bash(git checkout -b 7-frontend-backend-integration)"
+    ]
+  }
+}

@@ -1,0 +1,152 @@
+# API Contract: Retrieval Validation Service
+
+**Feature**: Retrieval Pipeline Validation
+**Date**: 2025-12-25
+
+## Service Overview
+The Retrieval Validation Service provides endpoints to validate the quality and accuracy of vector retrieval from Qdrant. This service is intended for internal validation and testing, not for production use.
+
+## Endpoints
+
+### POST /validation/run
+Trigger a comprehensive retrieval validation run.
+
+**Request Body:**
+```json
+{
+  "test_queries": [
+    {
+      "id": "string",
+      "text": "string",
+      "category": "string (optional)"
+    }
+  ],
+  "top_k": "integer (default: 5)",
+  "collection_name": "string (default: 'rag_embedding')"
+}
+```
+
+**Response:**
+```json
+{
+  "validation_id": "string",
+  "status": "string (running|completed|failed)",
+  "total_queries": "integer",
+  "completed_at": "datetime",
+  "metrics": {
+    "precision_at_k": "float",
+    "metadata_completeness": "float",
+    "metadata_accuracy": "float",
+    "avg_retrieval_time_ms": "float"
+  }
+}
+```
+
+**Error Responses:**
+- 400: Invalid request body
+- 401: Authentication failed
+- 500: Internal server error
+
+### GET /validation/{validation_id}
+Get the status and results of a validation run.
+
+**Response:**
+```json
+{
+  "validation_id": "string",
+  "status": "string (running|completed|failed)",
+  "created_at": "datetime",
+  "completed_at": "datetime (null if not completed)",
+  "metrics": {
+    "precision_at_k": "float",
+    "metadata_completeness": "float",
+    "metadata_accuracy": "float",
+    "avg_retrieval_time_ms": "float"
+  },
+  "detailed_results": [
+    {
+      "query_id": "string",
+      "query_text": "string",
+      "results": [
+        {
+          "id": "string",
+          "text_preview": "string",
+          "score": "float",
+          "metadata": {
+            "url": "string",
+            "title": "string",
+            "section": "string"
+          },
+          "is_relevant": "bool"
+        }
+      ]
+    }
+  ]
+}
+```
+
+### POST /validation/test-query
+Test a single query against the retrieval system.
+
+**Request Body:**
+```json
+{
+  "query_text": "string",
+  "top_k": "integer (default: 5)",
+  "collection_name": "string (default: 'rag_embedding')"
+}
+```
+
+**Response:**
+```json
+{
+  "query_text": "string",
+  "retrieved_results": [
+    {
+      "id": "string",
+      "text_preview": "string",
+      "score": "float",
+      "metadata": {
+        "url": "string",
+        "title": "string",
+        "section": "string"
+      }
+    }
+  ],
+  "retrieval_time_ms": "float"
+}
+```
+
+### GET /validation/metrics
+Get overall validation metrics across all runs.
+
+**Response:**
+```json
+{
+  "overall_precision": "float",
+  "overall_metadata_accuracy": "float",
+  "total_validations_run": "integer",
+  "avg_retrieval_time_ms": "float",
+  "last_validation_at": "datetime"
+}
+```
+
+## Data Models
+
+### TestQuery
+- `id`: Unique identifier for the test query
+- `text`: The query text to be used for similarity search
+- `category`: Optional category or topic of the query
+
+### RetrievedResult
+- `id`: ID of the retrieved document from Qdrant
+- `text_preview`: Preview of the actual content text (truncated)
+- `score`: Relevance score from similarity search (0.0 to 1.0)
+- `metadata`: Metadata from Qdrant (url, title, section, etc.)
+- `is_relevant`: Boolean indicating if the result is considered relevant
+
+### ValidationMetrics
+- `precision_at_k`: Precision at K positions (top 5, top 10, etc.)
+- `metadata_completeness`: Percentage of expected metadata fields present
+- `metadata_accuracy`: Percentage of metadata fields with correct values
+- `avg_retrieval_time_ms`: Average time to retrieve results in milliseconds

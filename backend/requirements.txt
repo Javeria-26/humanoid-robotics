@@ -1,0 +1,13 @@
+requests>=2.28.0
+beautifulsoup4>=4.11.0
+cohere>=4.0.0
+qdrant-client>=1.6.0
+python-dotenv>=1.0.0
+fastapi>=0.104.0
+pydantic>=2.0.0
+uvicorn>=0.24.0
+slowapi>=0.1.8
+aiocache>=0.11.1
+sentence-transformers>=2.2.2
+torch>=1.13.0
+transformers>=4.21.0

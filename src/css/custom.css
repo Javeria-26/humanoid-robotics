@@ -7,16 +7,24 @@
 
 /* You can override the default Docusaurus styles here. */
 
-/* CSS Custom Properties for Enhanced Dark Mode with Layered Gradients */
+/* CSS Custom Properties for Enhanced AI-Themed Dark Mode with Layered Gradients */
 :root {
-  /* Primary Colors - Deep Space Violet */
-  --ifm-color-primary: #8b5cf6; /* Violet accent */
-  --ifm-color-primary-dark: #7c3aed; /* Darker violet */
-  --ifm-color-primary-darker: #6d28d9; /* Even darker violet */
-  --ifm-color-primary-darkest: #5b21b6; /* Darkest violet */
-  --ifm-color-primary-light: #a78bfa; /* Lighter violet */
-  --ifm-color-primary-lighter: #c4b5fd; /* Even lighter violet */
-  --ifm-color-primary-lightest: #ddd6fe; /* Lightest violet */
+  /* Primary Colors - AI-Themed */
+  --ifm-color-primary: #0080ff; /* Electric blue */
+  --ifm-color-primary-dark: #0066cc; /* Darker electric blue */
+  --ifm-color-primary-darker: #0052a3; /* Even darker electric blue */
+  --ifm-color-primary-darkest: #003d7a; /* Darkest electric blue */
+  --ifm-color-primary-light: #3399ff; /* Lighter electric blue */
+  --ifm-color-primary-lighter: #66b2ff; /* Even lighter electric blue */
+  --ifm-color-primary-lightest: #99ccff; /* Lightest electric blue */
+
+  /* AI-Themed Accent Colors */
+  --ai-dark-navy: #0a0f2c;
+  --ai-black: #000014;
+  --ai-neon-cyan: #00ffff;
+  --ai-electric-blue: #0080ff;
+  --ai-soft-purple: #b86bff;
+  --ai-glow-color: rgba(0, 255, 255, 0.3);
 
   /* Soft Blue Theme */
   --ifm-background-color: linear-gradient(135deg, #e6f2ff 0%, #cce6ff 25%, #b3d9ff 50%, #cce6ff 100%); /* Soft blue gradient */
@@ -99,7 +107,7 @@
 
 /* Apply gradient background to body */
 body {
-  background: linear-gradient(135deg, #6e45e2 0%, #885ee4 25%, #a778f1 50%, #c4b5fd 100%);
+  background: linear-gradient(135deg, var(--ai-dark-navy) 0%, #0d1433 25%, #101a4d 50%, var(--ai-black) 100%);
   background-attachment: fixed;
   color: var(--ifm-color-content);
 }
@@ -127,7 +135,7 @@ body {
 }
 
 /* Enhanced layered background patterns for 3D depth */
-/* Base pattern - subtle particle field */
+/* Base pattern - neural network/circuit field */
 body::before {
   content: '';
   position: fixed;
@@ -136,11 +144,11 @@ body::before {
   width: 100%;
   height: 100%;
   background:
-    radial-gradient(circle at 15% 25%, rgba(139, 92, 246, 0.08) 0px, transparent 1px) 0 0,
-    radial-gradient(circle at 85% 75%, rgba(0, 255, 204, 0.08) 0px, transparent 1px) 0 0,
-    radial-gradient(circle at 50% 50%, rgba(79, 195, 247, 0.06) 0px, transparent 1px) 0 0,
-    radial-gradient(circle at 20% 80%, rgba(240, 147, 251, 0.06) 0px, transparent 1px) 0 0,
-    radial-gradient(circle at 75% 20%, rgba(184, 107, 255, 0.06) 0px, transparent 1px) 0 0;
+    radial-gradient(circle at 15% 25%, rgba(0, 255, 255, 0.08) 0px, transparent 1px) 0 0, /* Neon cyan */
+    radial-gradient(circle at 85% 75%, rgba(0, 128, 255, 0.08) 0px, transparent 1px) 0 0, /* Electric blue */
+    radial-gradient(circle at 50% 50%, rgba(184, 107, 255, 0.06) 0px, transparent 1px) 0 0, /* Soft purple */
+    radial-gradient(circle at 20% 80%, rgba(0, 255, 255, 0.04) 0px, transparent 1px) 0 0,
+    radial-gradient(circle at 75% 20%, rgba(0, 128, 255, 0.04) 0px, transparent 1px) 0 0;
   background-size: 200px 200px;
   animation: floatPattern 30s linear infinite;
   pointer-events: none;
@@ -148,7 +156,7 @@ body::before {
   opacity: 0.6;
 }
 
-/* Mid-layer geometric patterns */
+/* Mid-layer circuit patterns */
 body::after {
   content: '';
   position: fixed;
@@ -157,10 +165,10 @@ body::after {
   width: 100%;
   height: 100%;
   background:
-    linear-gradient(45deg, transparent 49%, rgba(139, 92, 246, 0.05) 50%, transparent 51%) 0 0,
-    linear-gradient(-45deg, transparent 49%, rgba(0, 255, 204, 0.05) 50%, transparent 51%) 0 0,
-    linear-gradient(135deg, transparent 49%, rgba(79, 195, 247, 0.03) 50%, transparent 51%) 0 0,
-    linear-gradient(-135deg, transparent 49%, rgba(240, 147, 251, 0.03) 50%, transparent 51%) 0 0;
+    linear-gradient(45deg, transparent 49%, rgba(0, 255, 255, 0.05) 50%, transparent 51%) 0 0, /* Neon cyan */
+    linear-gradient(-45deg, transparent 49%, rgba(0, 128, 255, 0.05) 50%, transparent 51%) 0 0, /* Electric blue */
+    linear-gradient(135deg, transparent 49%, rgba(184, 107, 255, 0.03) 50%, transparent 51%) 0 0, /* Soft purple */
+    linear-gradient(-135deg, transparent 49%, rgba(0, 255, 255, 0.03) 50%, transparent 51%) 0 0;
   background-size: 120px 120px;
   animation: slidePattern 25s linear infinite alternate;
   opacity: 0.4;
@@ -168,7 +176,7 @@ body::after {
   z-index: -1;
 }
 
-/* Additional depth layer - animated gradient mesh */
+/* Additional depth layer - neural network pattern */
 body::backdrop {
   content: '';
   position: fixed;
@@ -177,12 +185,44 @@ body::backdrop {
   width: 100%;
   height: 100%;
   background:
-    radial-gradient(circle at 30% 30%, rgba(139, 92, 246, 0.1) 0%, transparent 20%) 0 0,
-    radial-gradient(circle at 70% 70%, rgba(0, 255, 204, 0.1) 0%, transparent 20%) 0 0;
+    radial-gradient(circle at 30% 30%, rgba(0, 255, 255, 0.1) 0%, transparent 20%) 0 0, /* Neon cyan */
+    radial-gradient(circle at 70% 70%, rgba(0, 128, 255, 0.1) 0%, transparent 20%) 0 0; /* Electric blue */
   animation: meshPattern 40s ease-in-out infinite;
   opacity: 0.3;
   pointer-events: none;
   z-index: -2;
+}
+
+/* Neural network circuit pattern layer */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    /* Neural network connections */
+    linear-gradient(rgba(0, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 255, 0.05) 1px, transparent 1px),
+    /* Circuit pattern */
+    radial-gradient(circle at 10% 20%, rgba(0, 128, 255, 0.05) 1px, transparent 2px),
+    radial-gradient(circle at 30% 40%, rgba(0, 255, 255, 0.05) 1px, transparent 2px),
+    radial-gradient(circle at 50% 60%, rgba(184, 107, 255, 0.05) 1px, transparent 2px),
+    radial-gradient(circle at 70% 80%, rgba(0, 255, 255, 0.05) 1px, transparent 2px),
+    radial-gradient(circle at 90% 10%, rgba(0, 128, 255, 0.05) 1px, transparent 2px);
+  background-size:
+    80px 80px, /* Grid size */
+    80px 80px, /* Grid size */
+    100% 100%, /* Neural points */
+    100% 100%, /* Neural points */
+    100% 100%, /* Neural points */
+    100% 100%, /* Neural points */
+    100% 100%; /* Neural points */
+  animation: neuralNetworkMove 60s linear infinite;
+  opacity: 0.2;
+  pointer-events: none;
+  z-index: -1;
 }
 
 /* Extra depth layer using a pseudo-element on the html element */
@@ -194,8 +234,8 @@ html::before {
   width: 100%;
   height: 100%;
   background:
-    conic-gradient(from 0deg at 25% 25%, transparent 0deg, rgba(139, 92, 246, 0.05) 90deg, transparent 180deg) 0 0,
-    conic-gradient(from 180deg at 75% 75%, transparent 0deg, rgba(0, 255, 204, 0.05) 90deg, transparent 180deg) 0 0;
+    conic-gradient(from 0deg at 25% 25%, transparent 0deg, rgba(0, 255, 255, 0.05) 90deg, transparent 180deg) 0 0, /* Neon cyan */
+    conic-gradient(from 180deg at 75% 75%, transparent 0deg, rgba(0, 128, 255, 0.05) 90deg, transparent 180deg) 0 0; /* Electric blue */
   animation: rotatePattern 60s linear infinite;
   opacity: 0.2;
   pointer-events: none;
@@ -253,6 +293,40 @@ html::before {
   75% {
     transform: translate(5px, -10px) rotate(0.5deg);
     opacity: 0.5;
+  }
+}
+
+/* Animation for neural network movement */
+@keyframes neuralNetworkMove {
+  0% {
+    transform: translate(0, 0) scale(1);
+    background-position:
+      0 0, 0 0, /* Grid positions */
+      0 0, 0 0, 0 0, 0 0, 0 0; /* Neural points */
+  }
+  25% {
+    transform: translate(10px, 5px) scale(1.01);
+    background-position:
+      20px 20px, 20px 20px, /* Grid positions */
+      0 0, 0 0, 0 0, 0 0, 0 0; /* Neural points */
+  }
+  50% {
+    transform: translate(-5px, 10px) scale(0.99);
+    background-position:
+      -20px -20px, -20px -20px, /* Grid positions */
+      0 0, 0 0, 0 0, 0 0, 0 0; /* Neural points */
+  }
+  75% {
+    transform: translate(5px, -10px) scale(1.005);
+    background-position:
+      10px -10px, -10px 10px, /* Grid positions */
+      0 0, 0 0, 0 0, 0 0, 0 0; /* Neural points */
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+    background-position:
+      0 0, 0 0, /* Grid positions */
+      0 0, 0 0, 0 0, 0 0, 0 0; /* Neural points */
   }
 }
 
