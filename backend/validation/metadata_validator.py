@@ -6,7 +6,18 @@ of metadata in retrieved results.
 """
 import logging
 from typing import List, Dict, Any, Optional
-from .base import RetrievedResult, MetadataIntegrityCheck
+from .base import RetrievedResult
+# Import MetadataIntegrityCheck from models.py file using importlib to avoid directory conflict
+import importlib.util
+import os
+
+# Get the path to the models.py file in the same directory
+models_py_path = os.path.join(os.path.dirname(__file__), 'models.py')
+models_spec = importlib.util.spec_from_file_location("local_models", models_py_path)
+local_models = importlib.util.module_from_spec(models_spec)
+models_spec.loader.exec_module(local_models)
+
+MetadataIntegrityCheck = local_models.MetadataIntegrityCheck
 from .logger import validation_logger as logger
 
 

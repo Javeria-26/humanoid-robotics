@@ -10,8 +10,35 @@ from typing import List, Dict, Any, Optional
 from .search import similarity_search_service
 from .test_queries import TestQueryManager, default_query_manager
 from .base import TestQuery, RetrievedResult
-from .models import TestQueryResult, ValidationMetrics
-from .utils import time_function
+# Temporarily define TestQueryResult as a placeholder to avoid import issues
+from dataclasses import dataclass
+from datetime import datetime
+from typing import List, Dict, Any, Optional
+
+@dataclass
+class TestQueryResult:
+    """
+    Represents the results of a single test query execution.
+    """
+    query: 'TestQuery'  # Using string annotation to avoid circular reference
+    retrieved_results: List['RetrievedResult']
+    execution_time_ms: float
+    metrics: 'ValidationMetrics'
+    is_successful: bool = True
+    error_message: str = ""
+
+from .base import ValidationMetrics
+# Import time_function from utils.py file using importlib to avoid directory conflict
+import importlib.util
+import os
+
+# Get the path to the utils.py file in the same directory
+utils_py_path = os.path.join(os.path.dirname(__file__), 'utils.py')
+utils_spec = importlib.util.spec_from_file_location("local_utils", utils_py_path)
+local_utils = importlib.util.module_from_spec(utils_spec)
+utils_spec.loader.exec_module(local_utils)
+
+time_function = local_utils.time_function
 from .logger import validation_logger as logger
 
 

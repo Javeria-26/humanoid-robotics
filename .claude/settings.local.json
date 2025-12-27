@@ -42,7 +42,24 @@
       "Bash(pip install -r requirements.txt)",
       "Bash(curl:*)",
       "Bash(dir \"E:\\\\NewFolder\\\\BookHackathon\\\\website\\\\src\\\\pages\" /s)",
-      "Bash(cmd /c \"dir \"\"E:\\\\NewFolder\\\\BookHackathon\\\\website\\\\src\\\\pages\"\" /s\")"
+      "Bash(cmd /c \"dir \"\"E:\\\\NewFolder\\\\BookHackathon\\\\website\\\\src\\\\pages\"\" /s\")",
+      "Bash(dir)",
+      "Bash(dir backend /s)",
+      "Bash(dir .env)",
+      "Bash(docker --version)",
+      "Bash(pip install qdrant-server)",
+      "Bash(dir \"backend\\\\validation\" /s)",
+      "Bash(pip search qdrant-local)",
+      "Bash(findstr -i qdrant)",
+      "Bash(pip install qdrant-local)",
+      "Bash(dir \"backend\\\\validation\\\\api\" /s)",
+      "Bash(dir \"backend\\\\validation\\\\models\" /s)",
+      "Bash(dir \"backend\\\\validation\")",
+      "Bash(uvicorn validation.api.app:app --port 8000)",
+      "Bash(taskkill /F /PID 12796)",
+      "Bash(netstat -ano)",
+      "Bash(findstr :8000)",
+      "Bash(taskkill /PID 12796 /F)"
     ]
   }
 }

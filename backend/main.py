@@ -342,24 +342,42 @@ def initialize_qdrant_client() -> QdrantClient:
     """
     qdrant_url = os.getenv("QDRANT_URL")
     qdrant_api_key = os.getenv("QDRANT_API_KEY")
+    qdrant_local_path = os.getenv("QDRANT_LOCAL_PATH")
 
-    if not qdrant_url:
+    # If local path is specified, use local Qdrant instance
+    if qdrant_local_path:
+        logger.info(f"Initializing local Qdrant client with path: {qdrant_local_path}")
+        client = QdrantClient(path=qdrant_local_path)  # Local instance
+    elif not qdrant_url:
         logger.warning("QDRANT_URL not set, using local instance at http://localhost:6333")
         qdrant_url = "http://localhost:6333"
+        logger.info(f"Initializing Qdrant client with URL: {qdrant_url}")
 
-    logger.info(f"Initializing Qdrant client with URL: {qdrant_url}")
-
-    if qdrant_api_key:
-        client = QdrantClient(
-            url=qdrant_url,
-            api_key=qdrant_api_key,
-            timeout=10
-        )
+        if qdrant_api_key:
+            client = QdrantClient(
+                url=qdrant_url,
+                api_key=qdrant_api_key,
+                timeout=10
+            )
+        else:
+            client = QdrantClient(
+                url=qdrant_url,
+                timeout=10
+            )
     else:
-        client = QdrantClient(
-            url=qdrant_url,
-            timeout=10
-        )
+        logger.info(f"Initializing Qdrant client with URL: {qdrant_url}")
+
+        if qdrant_api_key:
+            client = QdrantClient(
+                url=qdrant_url,
+                api_key=qdrant_api_key,
+                timeout=10
+            )
+        else:
+            client = QdrantClient(
+                url=qdrant_url,
+                timeout=10
+            )
 
     # Test the connection
     try:

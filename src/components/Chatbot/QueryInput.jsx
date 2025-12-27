@@ -57,10 +57,14 @@ const QueryInput = () => {
       // Set loading state
       setLoading(true);
 
-      // Prepare context for the query
-      const context = {};
+      // Prepare context for the query with query type classification
+      const context = {
+        query_type: selectedText ? 'selected_text_query' : 'full_book_query',
+        source: 'chatbot_ui'
+      };
       if (selectedText) {
         context.selected_text = selectedText;
+        context.selected_text_length = selectedText.length;
       }
 
       // Include page information if available
@@ -68,6 +72,7 @@ const QueryInput = () => {
         context.page_info = {
           url: window.location.href,
           title: document.title,
+          hostname: window.location.hostname
         };
       }
 

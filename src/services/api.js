@@ -1,7 +1,12 @@
 // API service for backend communication
+// Use environment variable or default to production URL
+const DEFAULT_API_URL = typeof window !== 'undefined'
+  ? `${window.location.protocol}//${window.location.hostname}:${window.location.port || 8000}/api/v1`
+  : 'http://localhost:8000/api/v1';
+
 const API_BASE_URL = (typeof process !== 'undefined' && process.env && process.env.REACT_APP_BACKEND_API_URL)
   ? process.env.REACT_APP_BACKEND_API_URL
-  : 'http://localhost:8000/api/v1';
+  : DEFAULT_API_URL;
 
 class ApiService {
   constructor() {
@@ -11,7 +16,7 @@ class ApiService {
     this.maxCacheSize = 50; // Maximum number of cached items
   }
 
-  // Helper method to make API requests
+  // Helper method to make API requests with enhanced CORS and error handling
   async makeRequest(endpoint, options = {}) {
     const url = `${this.baseURL}${endpoint}`;
     const defaultOptions = {
@@ -19,6 +24,10 @@ class ApiService {
         'Content-Type': 'application/json',
         // Add any default headers here
       },
+      // Enable CORS mode explicitly
+      mode: 'cors',
+      // Include credentials if needed for auth
+      credentials: 'omit', // Change to 'include' if backend requires cookies/sessions
     };
 
     // Merge default options with provided options
@@ -36,12 +45,29 @@ class ApiService {
 
       // Check if response is ok (status 200-299)
       if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
+        // Handle different error types
+        if (response.status === 401 || response.status === 403) {
+          throw new Error(`Authentication failed: ${response.status} - ${response.statusText}`);
+        } else if (response.status === 404) {
+          throw new Error('API endpoint not found. Please check your backend connection.');
+        } else if (response.status >= 500) {
+          throw new Error(`Server error: ${response.status} - ${response.statusText}. The backend service may be unavailable.`);
+        } else {
+          const errorData = await response.json().catch(() => ({}));
+          throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
+        }
       }
 
       return await response.json();
     } catch (error) {
+      // Handle network errors, CORS errors, and other fetch-related errors
+      if (error.name === 'TypeError' && error.message.includes('fetch')) {
+        throw new Error('Network error: Unable to connect to the server. Please check if the backend is running and accessible.');
+      } else if (error.message.includes('CORS')) {
+        throw new Error('CORS error: Cross-Origin Resource Sharing is blocking the request. Please check backend CORS configuration.');
+      } else if (error.message.includes('Failed to fetch')) {
+        throw new Error('Connection error: Cannot reach the backend server. Please verify the backend URL and ensure the server is running.');
+      }
       console.error('API request failed:', error);
       throw error;
     }
@@ -162,17 +188,23 @@ class ApiService {
       return await this.submitQueryWithCache(query, context, sessionId);
     } catch (error) {
       // Handle different types of errors
-      if (error.name === 'TypeError' && error.message.includes('fetch')) {
-        throw new Error('Network error: Unable to connect to the server. Please check your internet connection.');
+      if (error.message.includes('CORS error')) {
+        throw new Error('Connection blocked by CORS policy. Please check backend CORS configuration.');
+      } else if (error.message.includes('Connection error')) {
+        throw new Error('Cannot connect to the backend server. Please verify the server is running and accessible.');
       } else if (error.message.includes('timeout')) {
         throw new Error('Request timeout: The server is taking too long to respond. Please try again later.');
+      } else if (error.message.includes('Authentication failed')) {
+        throw new Error('Authentication error: Unable to access the service. Please check your credentials.');
+      } else if (error.message.includes('API endpoint not found')) {
+        throw new Error('Service unavailable: The API endpoint cannot be found. Please check if the backend service is running.');
+      } else if (error.message.includes('Server error')) {
+        throw new Error('Server error: The service is temporarily unavailable. Please try again later.');
+      } else if (error.name === 'TypeError' && error.message.includes('fetch')) {
+        throw new Error('Network error: Unable to connect to the server. Please check your internet connection.');
       } else if (error.message.includes('HTTP error')) {
         if (error.message.includes('400')) {
           throw new Error('Invalid request: Please check your query and try again.');
-        } else if (error.message.includes('401') || error.message.includes('403')) {
-          throw new Error('Authentication error: Unable to access the service. Please check your credentials.');
-        } else if (error.message.includes('500')) {
-          throw new Error('Server error: The service is temporarily unavailable. Please try again later.');
         } else {
           throw new Error(`Service error: ${error.message}`);
         }
